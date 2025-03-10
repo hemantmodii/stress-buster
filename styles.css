@@ -80,6 +80,7 @@ body {
   text-align: center;
   background-color: darkblue;
   border: var(--toggle-circle-border, 0px solid white);
+  opacity: 0.3;
 }
 
 #toggle-theme::after {
@@ -95,6 +96,7 @@ body {
   border-left: transparent;
   border-bottom: transparent;
   transition: all 0.3s ease-in-out;
+  opacity: 0.3;
 }
 
 #toggle-theme::before {
@@ -123,6 +125,11 @@ body {
   height: 40px;
   width: 40px;
   left: -15px;
+  opacity: 1;
+}
+
+#toggle-theme:hover {
+  opacity: 1;
 }
 
 .circle.pulse{
