@@ -1,0 +1,140 @@
+:root {
+  --circle-radius: 50px;
+
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  background-color: black;
+  overflow: hidden;
+  color: black;
+  cursor:crosshair;
+}
+
+#container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+}
+
+.circle {
+  width: var(--circle-radius);
+  height: var(--circle-radius);
+  background-color: white;
+  border-radius: 50%;
+  position: absolute;
+  translate: -50% -50%;
+  opacity: 0.1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle.show {
+  opacity: 1;
+}
+
+.horizontal-line,
+.vertical-line {
+  position: absolute;
+  background-color: white;
+}
+
+.text {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  translate: -50% -50%;
+  margin-inline: auto;
+  font-size: 20px;
+  z-index: 9;
+  opacity: 1;
+  animation: fade 5s forwards ease-out;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+#toggle-theme {
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  z-index: 10;
+  font-size: 24px;
+  text-align: center;
+  background-color: darkblue;
+  border: var(--toggle-circle-border, 0px solid white);
+}
+
+#toggle-theme::after {
+  position: absolute;
+  top: 25px;
+  left: -5px;
+  content: "";
+  height: 30px;
+  width: 30px;
+  background-color: transparent;
+  z-index: -2;
+  border: var(--theme-border, 3px solid darkblue);
+  border-left: transparent;
+  border-bottom: transparent;
+  transition: all 0.3s ease-in-out;
+}
+
+#toggle-theme::before {
+  content: "Toggle theme";
+  position: absolute;
+  top: 50%;
+  left: -120%;
+  transform: translate(-50%, -50%);
+  background-color: #333;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: 0;
+  /* white-space: nowrap; */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+#toggle-theme:hover::before {
+  opacity: 1;
+}
+
+#toggle-theme:hover::after {
+  height: 40px;
+  width: 40px;
+  left: -15px;
+}
+
+.circle.pulse{
+  animation: pulse 1s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
